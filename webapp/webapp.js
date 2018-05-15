@@ -1,4 +1,4 @@
-const PORT = 5000;
+
 //const io = require('socket.io-client');									//Đặt địa chỉ Port được mở ra để tạo ra chương trình mạng Socket Server
 
 function ParseJson(jsondata) {
@@ -9,7 +9,7 @@ function ParseJson(jsondata) {
     }
 }
 
-var socket =  io.connect('192.168.137.1:'+PORT+'/webapp');
+var socket =  io.connect('/webapp');
 
 var sensor = [0, 0];
 var device = [0, 0, 0, 0];
