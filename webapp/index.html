@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>My App</title>
+		<style>
+			html{
+				padding:0px;
+				margin:0px;
+
+			}
+			body{ 
+				font-family: Athiti, Bookerly, Cambria, Times New Roman; 
+				font-size: 2em;
+				margin: 0px auto; 
+				text-align: center;
+				background-color: #34495e;
+				font-weight: bold;
+				width: 100%;
+				height: 100%;
+			}
+			span{
+				font-family: Athiti, Bookerly, Cambria, Times New Roman;
+			}
+			.tgl, .tgl:after, .tgl:before, .tgl *, .tgl *:after, .tgl *:before, .tgl + .tgl-btn {
+			  box-sizing: border-box;
+			}
+			.tgl::-moz-selection, .tgl:after::-moz-selection, .tgl:before::-moz-selection, .tgl *::-moz-selection, .tgl *:after::-moz-selection, .tgl *:before::-moz-selection, .tgl + .tgl-btn::-moz-selection {
+			  background: none;
+			}
+			.tgl::selection, .tgl:after::selection, .tgl:before::selection, .tgl *::selection, .tgl *:after::selection, .tgl *:before::selection, .tgl + .tgl-btn::selection {
+			  background: none;
+			}
+			.tgl + .tgl-btn {
+			  outline: 0;
+			  display: block;
+			  width: 100px;
+			  height: 50px;
+			  margin: 10px auto 15px;
+			  position: relative;
+			  cursor: pointer;
+			  -webkit-user-select: none;
+				 -moz-user-select: none;
+				  -ms-user-select: none;
+					  user-select: none;
+			}
+			.tgl + .tgl-btn:after, .tgl + .tgl-btn:before {
+			  position: relative;
+			  display: block;
+			  content: "";
+			  width: 50%;
+			  height: 100%;
+			}
+			.tgl + .tgl-btn:after {
+			  left: 0;
+			}
+			.tgl + .tgl-btn:before {
+			  display: none;
+			}
+			.tgl:checked + .tgl-btn:after {
+			  left: 50%;
+			}
+
+			.tgl-light + .tgl-btn {
+			  background: #f0f0f0;
+			  border-radius: 2em;
+			  padding: 2px;
+			  transition: all .4s ease;
+			}
+			.tgl-light + .tgl-btn:after {
+			  border-radius: 50%;
+			  background: #fff;
+			  transition: all .2s ease;
+			}
+			.tgl-light:checked + .tgl-btn {
+			  background: #9FD6AE;
+			}
+
+			.tgl-ios + .tgl-btn {
+			  background: #fbfbfb;
+			  border-radius: 2em;
+			  padding: 2px;
+			  transition: all .4s ease;
+			  border: 1px solid #e8eae9;
+			}
+			.tgl-ios + .tgl-btn:after {
+			  border-radius: 2em;
+			  background: #fbfbfb;
+			  transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease, margin 0.3s ease;
+			  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 0 rgba(0, 0, 0, 0.08);
+			}
+			.tgl-ios + .tgl-btn:hover:after {
+			  will-change: padding;
+			}
+			.tgl-ios + .tgl-btn:active {
+			  box-shadow: inset 0 0 0 2em #e8eae9;
+			}
+			.tgl-ios + .tgl-btn:active:after {
+			  padding-right: .8em;
+			}
+			.tgl-ios:checked + .tgl-btn {
+			  background: #86d993;
+			}
+			.tgl-ios:checked + .tgl-btn:active {
+			  box-shadow: none;
+			}
+			.tgl-ios:checked + .tgl-btn:active:after {
+			  margin-left: -.8em;
+			}
+			[type=checkbox]{
+				display:none;
+			}
+			.button{	
+				display:block;
+				margin: 15px auto 15px;
+			}
+			
+			@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+			* {
+			  box-sizing: border-box;
+			}
+
+			body {
+			  background: #edece7;
+			}
+			
+			.socket-switch{
+				displaY:inline-block;
+			}
+			
+			.switch {
+			  display: block;
+			  position: relative;
+			  width: 70px;
+			  height: 100px;
+			  margin: 10px;
+			  border-radius: 50px;
+			  background: #e6e3da;
+			  background: linear-gradient(#e6e3da, #ffffff);
+			  border: 1px solid rgba(0, 0, 0, 0.1);
+			  box-shadow: inset 0 7px 0 #fdfdfd, 0 2px 3px rgba(170, 160, 140, 0.3);
+			  cursor: pointer;
+			}
+
+			.switch:before {
+			  content: "";
+			  position: absolute;
+			  top: -10px;
+			  bottom: -10px;
+			  left: -5px;
+			  right: -5px;
+			  z-index: -1;
+			  background: #f2f1ed;
+			  border-radius: inherit;
+			  box-shadow: 0 1px 1px rgba(174, 163, 145, 0.2), 0 3px 3px rgba(170, 160, 140, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 0 5px rgba(170, 160, 140, 0.5);
+			}
+
+			.switch:after {
+			  content: "";
+			  position: absolute;
+			  width: 60px;
+			  height: 70px;
+			  border-radius: 50%;
+			  z-index: -1;
+			  left: 18px;
+			  top: 10px;
+			  background: linear-gradient(160deg, rgba(170, 160, 140, 0.7), rgba(170, 160, 140, 0));
+			  background: -webkit-linear-gradient(290deg, rgba(170, 160, 140, 0.75), rgba(170, 160, 140, 0));
+			  -webkit-filter: blur(1px);
+			}
+
+			.switch-input {
+			  clip: rect(0 0 0 0);
+			  position: absolute;
+			  visibility: hidden;
+			}
+
+			.switch-input:checked ~ .switch {
+			  background: linear-gradient(#f7f6f4, #ffffff);
+			  box-shadow: inset 0 -5px 0 #dbd3c8, 0 6px 5px rgba(170, 160, 140, 0.75), 3px 16px 5px rgba(170, 160, 140, 0.3);
+			  border: #9FD6AE 3.5px solid;
+			  border-bottom: none;
+			}
+
+			.switch-input:checked ~ .switch:after {
+			  display: none;
+			}
+
+			#temperature::after{
+				content: " \2103";
+			}
+
+			#humidity::after{
+				content: ' %';
+			}
+			
+		</style>
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+		
+		<script src="webapp.js"></script>
+
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	</head>
+	
+	<body>
+	<div class="jumbotron">
+		<div class="container" style="margin-bottom: 40px;">
+			<div class="row" style="margin-bottom: 20px;">
+				<div class="col-md-4"></div>
+				<div class="col-md-2 text-center">
+					<span style="font-weight:bold; font-size:1.5em; display:block;">Nhiệt độ</span>
+				</div>
+				<div class="col-md-2 text-center">
+					<span style="font-weight:bold; font-size:1.5em; display:block;" id="temperature"></span>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-2 text-center">
+					<span style="font-weight:bold; font-size:1.5em; display:block;">Độ ẩm</span>
+				</div>
+				<div class="col-md-2 text-center">
+					<span style="font-weight:bold; font-size:1.5em; display:block;" id="humidity"></span>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+		</div>
+
+	
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-2 text-center">
+					<span style="font-weight:bold; font-size:1.5em; display:block;">Đèn 1</span>
+				</div>
+				<div class="col-md-2 align-middle text-center">
+					<input class="tgl tgl-ios" id="buttonLed1" type="checkbox"/>
+					<label class="tgl-btn" for="buttonLed1"></label>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-2 text-center">
+					<span style="font-weight:bold; font-size:1.5em; display:block;">Đèn 2</span>
+				</div>
+				<div class="col-md-2 align-middle text-center">
+					<input class="tgl tgl-ios" id="buttonLed2" type="checkbox"/>
+					<label class="tgl-btn" for="buttonLed2"></label>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+		</div>
+		<div class ="container">
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-2 text-center">
+					<span style="font-weight:bold; font-size:1.5em; display:block;">Ổ cắm 1</span>
+				</div>
+				<div class="col-md-2 text-center">
+					<div class="socket-switch">
+						<input type="checkbox" name="switch1" id="switch1" class="switch-input">
+						<label class="switch" for="switch1"></label>
+					</div>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-2 text-center">
+					<span style="font-weight:bold; font-size:1.5em; display:block;">Ổ cắm 2</span>
+				</div>
+				<div class="col-md-2 text-center">
+					<div class="socket-switch">
+						<input type="checkbox" name="switch2" id="switch2" class="switch-input">
+						<label class="switch" for="switch2"></label>
+					</div>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+			
+		</div>
+	</div>
+	</body>
+</html>
