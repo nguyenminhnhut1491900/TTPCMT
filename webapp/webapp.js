@@ -1,6 +1,3 @@
-
-//const io = require('socket.io-client');									//Đặt địa chỉ Port được mở ra để tạo ra chương trình mạng Socket Server
-
 function ParseJson(jsondata) {
     try {
         return JSON.parse(jsondata);
@@ -20,7 +17,7 @@ socket.on('sensor', function(jsondata){
 	updateSensorState();
 });
 
-socket.on('device', function(jsondata){
+socket.on('devStt', function(jsondata){
 	var data = ParseJson(jsondata);
 	device = data.device;
 	updateDeviceState();
@@ -39,6 +36,8 @@ function updateDeviceState(){
 }
 
 $(document).ready(function(){
+
+	socket.emit('devStt');
 
 	updateDeviceState();
 	updateSensorState();	
